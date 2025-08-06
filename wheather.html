@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Report</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #87ceeb, #ffffff); /* Light blue sky */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .weather-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 25px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .weather-box h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #1565c0;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 90%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #1976d2;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+    }
+
+    .result {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .result p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #1976d2;
+    }
+
+    @media screen and (max-width: 480px) {
+      .weather-box {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="weather-box">
+    <h1>☀ Weather Report</h1>
+    <div class="input-group">
+      <input type="text" id="cityInput" placeholder="Enter City Name">
+    </div>
+    <button onclick="showWeather()">Check Weather</button>
+
+    <div class="result" id="result">
+      <p><span class="label">City:</span> <span id="cityName">-</span></p>
+      <p><span class="label">Temperature:</span> <span id="temp">--°C</span></p>
+      <p><span class="label">Condition:</span> <span id="condition">Sunny</span></p>
+      <p><span class="label">Humidity:</span> <span id="humidity">--%</span></p>
+      <p><span class="label">Wind Speed:</span> <span id="wind">-- km/h</span></p>
+    </div>
+  </div>
+
+  <script>
+    function showWeather() {
+      const city = document.getElementById('cityInput').value.trim();
+      if (city === "") {
+        alert("Please enter a city name.");
+        return;
+      }
+
+      const temp = Math.floor(Math.random() * 10 + 25); 
+      const humidity = Math.floor(Math.random() * 30 + 40);       
+      const wind = Math.floor(Math.random() * 20 + 5);
+ 
+      document.getElementById('cityName').innerText = city;
+      document.getElementById('temp').innerText = temp + "°C";
+      document.getElementById('humidity').innerText = humidity + "%";
+      document.getElementById('wind').innerText = wind + " km/h";
+      document.getElementById('result').style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
